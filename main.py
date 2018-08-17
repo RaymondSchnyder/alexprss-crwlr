@@ -1,6 +1,5 @@
 import requests, json
 import os
-import urllib
 import asyncio
 from time import sleep
 from pyrogram import Client, Filters
@@ -9,9 +8,10 @@ from pyrogram.api.errors import (
     BadRequest, Flood, FloodWait, InternalServerError,
     SeeOther, Unauthorized, UnknownError
 )
-
-c = open('api.conf', 'r')
+dir = "config/"
+c = open(dir + 'api.conf', 'r')
 api_config = [line.rstrip('\n') for line in c]
+print(api_config[0])
 c.close()
 app = Client(api_config[0])
 
@@ -72,11 +72,11 @@ def stop(client, message):
 @asyncio.coroutine
 def download():
     asyncio.sleep(2)
-    f = open('links.txt', 'r')
+    f = open(dir + 'links.txt', 'r')
     lines = [line.rstrip('\n') for line in f]
     f.close()
     for index, value in enumerate(id):
-        # print(value)
+        print("\r\nSearching now in " + str(index) + " " + str(value) + " \r\n")
         request_url = url + str(value) + url2
         r = requests.get(request_url)
         json_data = r.json()
