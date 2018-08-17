@@ -13,3 +13,4 @@ install the following modules to make this work:
 - asyncio
 
 insert your telegram bot api key into "api.conf"
+and into config.ini in the root
